@@ -16,7 +16,9 @@ function initGrid() {
     }
 }
 function begin() {
-    const app = new PIXI.Application();
+    const app = new PIXI.Application({
+        width: WIDTH, height: HEIGHT, backgroundColor: 0x1099bb, resolution: window.devicePixelRatio || 1,
+    });
     document.body.appendChild(app.view);
 
     graphics = new PIXI.Graphics();
@@ -32,6 +34,7 @@ function begin() {
             console.log("stopped");
         }
         drawGrid();
+        document.getElementById('frameRate').innerHTML = app.ticker.FPS;
     });
 }
 function drawGrid() {
